@@ -1,17 +1,13 @@
-name: Trigger on Pull Request
+---
+name: Preflight
+
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
+  - pull_request
+  - push
 
 jobs:
-  build:
+  preflight-job:
+    name: Preflight Step
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run your build or tests
-        # Add your build and test commands here
+      - run: env
